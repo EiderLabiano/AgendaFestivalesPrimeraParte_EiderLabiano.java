@@ -109,14 +109,7 @@ public class Festival {
      * en un fecha anterior a otro
      */
     public boolean empiezaAntesQue(Festival otro) {
-        if (this.fechaInicio.isBefore(otro.fechaInicio))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return this.fechaInicio.isBefore(otro.fechaInicio);
     }
 
     /**
@@ -126,14 +119,7 @@ public class Festival {
      * en un fecha posteior a otro
      */
     public boolean empiezaDespuesQue(Festival otro) {
-        if (this.fechaInicio.isAfter(otro.fechaInicio))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+       return this.fechaInicio.isAfter(otro.fechaInicio);
     }
 
     /**
