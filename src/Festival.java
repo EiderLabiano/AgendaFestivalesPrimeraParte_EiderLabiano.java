@@ -59,10 +59,47 @@ public class Festival {
      *
      */
     public Mes getMes() {
-        //TODO
-        
-        return null;
-        
+        Mes miMes = null;
+        switch (fechaInicio.getMonth())
+        {
+            case JANUARY:
+                miMes = Mes.ENERO;
+                break;
+            case FEBRUARY:
+                miMes = Mes.FEBRERO;
+                break;
+            case MARCH:
+                miMes = Mes.MARZO;
+                break;
+            case APRIL:
+                miMes = Mes.ABRIL;
+                break;
+            case MAY:
+                miMes = Mes.MAYO;
+                break;
+            case JUNE:
+                miMes = Mes.JUNIO;
+                break;
+            case JULY:
+                miMes = Mes.JULIO;
+                break;
+            case AUGUST:
+                miMes = Mes.AGOSTO;
+                break;
+            case SEPTEMBER:
+                miMes = Mes.SEPTIEMBRE;
+                break;
+            case OCTOBER:
+                miMes = Mes.OCTUBRE;
+                break;
+            case NOVEMBER:
+                miMes = Mes.NOVIEMBRE;
+                break;
+            case DECEMBER:
+                miMes = Mes.DICIEMBRE;
+                break;
+        }
+        return miMes;
     }
 
     /**
@@ -72,10 +109,14 @@ public class Festival {
      * en un fecha anterior a otro
      */
     public boolean empiezaAntesQue(Festival otro) {
-        //TODO
-        
-        return true;
-        
+        if (this.fechaInicio.isBefore(otro.fechaInicio))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /**
@@ -85,10 +126,14 @@ public class Festival {
      * en un fecha posteior a otro
      */
     public boolean empiezaDespuesQue(Festival otro) {
-        //TODO
-        
-        return true;
-        
+        if (this.fechaInicio.isAfter(otro.fechaInicio))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /**
@@ -96,10 +141,8 @@ public class Festival {
      * @return true si el festival ya ha concluido
      */
     public boolean haConcluido() {
-        //TODO
-        
-        return true;
-
+        LocalDate terminado = this.fechaInicio.plusDays(this.duracion);
+        return terminado.isBefore(LocalDate.now());
     }
 
     /**
