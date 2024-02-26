@@ -138,10 +138,119 @@ public class Festival {
      */
     @Override
     public String toString() {
-       //TODO
-        
-        return null;
-        
+        String miMes = "";
+        int diasQueFaltan = LocalDate.now().getDayOfYear() - fechaInicio.getDayOfYear();
+        switch (getMes())
+        {
+            case ENERO:
+                miMes = "ene.";
+                break;
+            case FEBRERO:
+                miMes = "feb.";
+                break;
+            case MARZO:
+                miMes = "mar.";
+                break;
+            case ABRIL:
+                miMes = "abr.";
+                break;
+            case MAYO:
+                miMes = "may.";
+                break;
+            case JUNIO:
+                miMes = "jun.";
+                break;
+            case JULIO:
+                miMes = "jul.";
+                break;
+            case AGOSTO:
+                miMes = "ago.";
+                break;
+            case SEPTIEMBRE:
+                miMes = "sep.";
+                break;
+            case OCTUBRE:
+                miMes = "oct.";
+                break;
+            case NOVIEMBRE:
+                miMes = "nov.";
+                break;
+            case DICIEMBRE:
+                miMes = "dic.";
+                break;
+        }
+        if (getDuracion() == 1)
+        {
+            if (haConcluido())
+            {
+                return nombre + "\t\t\t" + getEstilos() + "\t" + lugar + "\n" + fechaInicio.getDayOfMonth() + " " + miMes + " " + fechaInicio.getYear() + "(concluido)" + "\n------------------------------------------------------------";
+            }
+            else if (fechaInicio.equals(LocalDate.now()))
+            {
+                return nombre + "\t\t\t" + getEstilos() + "\t" + lugar + "\n" + fechaInicio.getDayOfMonth() + " " + miMes + " " + fechaInicio.getYear() + "(ON)" + "\n------------------------------------------------------------";
+            }
+            else
+            {
+                return nombre + "\t\t\t" + getEstilos() + "\t" + lugar + "\n" + fechaInicio.getDayOfMonth() + " " + miMes + " " + fechaInicio.getYear() + "(quedan " + diasQueFaltan + " días)" + "\n------------------------------------------------------------";
+
+            }
+        }
+        else
+        {
+            String miMes2 = "";
+            LocalDate fechaFin = fechaInicio.plusDays(duracion);
+            switch (fechaFin.getMonth())
+            {
+                case JANUARY:
+                    miMes2 = "ene.";
+                    break;
+                case FEBRUARY:
+                    miMes2 = "feb.";
+                    break;
+                case MARCH:
+                    miMes2 = "mar.";
+                    break;
+                case APRIL:
+                    miMes2 = "abr.";
+                    break;
+                case MAY:
+                    miMes2 = "may.";
+                    break;
+                case JUNE:
+                    miMes2 = "jun.";
+                    break;
+                case JULY:
+                    miMes2 = "jul.";
+                    break;
+                case AUGUST:
+                    miMes2 = "ago.";
+                    break;
+                case SEPTEMBER:
+                    miMes2 = "sep.";
+                    break;
+                case OCTOBER:
+                    miMes2 = "oct.";
+                    break;
+                case NOVEMBER:
+                    miMes2 = "nov.";
+                    break;
+                case DECEMBER:
+                    miMes2 = "dic.";
+                    break;
+            }
+            if (haConcluido())
+            {
+                return nombre + "\t\t\t" + getEstilos() + "\n" + lugar + "\n" + fechaInicio.getDayOfMonth() + " " + miMes + " - " + fechaFin.getYear() + " " + miMes2 + " " + fechaInicio.getYear() + "(concluido)" + "\n------------------------------------------------------------";
+            }
+            else if (fechaInicio.isBefore(LocalDate.now()) && fechaFin.isAfter(LocalDate.now()) || fechaInicio.equals(LocalDate.now()) || fechaFin.equals(LocalDate.now()))
+            {
+                return nombre + "\t\t\t" + getEstilos() + "\n" + lugar + "\n" + fechaInicio.getDayOfMonth() + " " + miMes + " - " + fechaFin.getYear() + " " + miMes2 + " " + fechaFin.getYear() + "(ON)" + "\n------------------------------------------------------------";
+            }
+            else
+            {
+                return nombre + "\t\t\t" + getEstilos() + "\n" + lugar + "\n" + fechaInicio.getDayOfMonth() + " " + miMes + " - " + fechaInicio.plusDays(duracion).getDayOfMonth() + miMes2 + " " + fechaInicio.plusDays(duracion).getYear() + "(quedan " + diasQueFaltan + " días)" + "\n------------------------------------------------------------";
+            }
+        }
     }
 
     /**
