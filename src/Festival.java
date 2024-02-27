@@ -58,7 +58,8 @@ public class Festival {
      * valor enumerado
      *
      */
-    public Mes getMes() {
+    public Mes getMes()
+    {
         Mes miMes = null;
         switch (fechaInicio.getMonth())
         {
