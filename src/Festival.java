@@ -58,7 +58,8 @@ public class Festival {
      * valor enumerado
      *
      */
-    public Mes getMes() {
+    public Mes getMes()
+    {
         Mes miMes = null;
         switch (fechaInicio.getMonth())
         {
@@ -183,15 +184,15 @@ public class Festival {
         {
             if (haConcluido())
             {
-                return nombre + "\t\t\t" + getEstilos() + "\t" + lugar + "\n" + fechaInicio.getDayOfMonth() + " " + miMes + " " + fechaInicio.getYear() + "(concluido)" + "\n------------------------------------------------------------";
+                return nombre + "\t\t\t" + getEstilos() + "\n" + lugar + "\n" + fechaInicio.getDayOfMonth() + " " + miMes + " " + fechaInicio.getYear() + "(concluido)" + "\n------------------------------------------------------------";
             }
             else if (fechaInicio.equals(LocalDate.now()))
             {
-                return nombre + "\t\t\t" + getEstilos() + "\t" + lugar + "\n" + fechaInicio.getDayOfMonth() + " " + miMes + " " + fechaInicio.getYear() + "(ON)" + "\n------------------------------------------------------------";
+                return nombre + "\t\t\t" + getEstilos() + "\n" + lugar + "\n" + fechaInicio.getDayOfMonth() + " " + miMes + " " + fechaInicio.getYear() + "(ON)" + "\n------------------------------------------------------------";
             }
             else
             {
-                return nombre + "\t\t\t" + getEstilos() + "\t" + lugar + "\n" + fechaInicio.getDayOfMonth() + " " + miMes + " " + fechaInicio.getYear() + "(quedan " + diasQueFaltan + " días)" + "\n------------------------------------------------------------";
+                return nombre + "\t\t\t" + getEstilos() + "\n" + lugar + "\n" + fechaInicio.getDayOfMonth() + " " + miMes + " " + fechaInicio.getYear() + "(quedan " + diasQueFaltan + " días)" + "\n------------------------------------------------------------";
 
             }
         }
