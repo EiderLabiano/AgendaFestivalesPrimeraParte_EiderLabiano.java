@@ -79,7 +79,19 @@ public class AgendaFestivales {
      */
     @Override
     public String toString() {
-        return null;
+        String i = "";
+        ArrayList<Mes> misMeses = new ArrayList<>(agenda.keySet());
+        ArrayList<Festival> miFestival;
+        for (Mes miMes : misMeses)
+        {
+            miFestival = new ArrayList<>(agenda.get(miMes));
+            i = i.concat("\n\n" + miMes + " (" + this.festivalesEnMes(miMes) + " festival/es)\n");
+            for (Festival festival : miFestival)
+            {
+                i = i.concat(festival.toString());
+            }
+        }
+        return i;
     }
 
     /**
