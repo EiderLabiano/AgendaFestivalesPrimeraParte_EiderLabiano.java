@@ -38,18 +38,17 @@ public class AgendaFestivales {
      *
      */
     public void addFestival(Festival festival) {
-        String miMes = festival.getMes().toString();
         ArrayList<Festival> miFestival = new ArrayList<>();
-        if (agenda.containsKey(miMes))
+        if (agenda.containsKey(festival.getMes()))
         {
-           miFestival = agenda.get(miMes);
+           miFestival = agenda.get(festival.getMes());
            int pos = obtenerPosicionDeInsercion(miFestival, festival);
            miFestival.add(pos, festival);
         }
         else
         {
             miFestival.add(festival);
-            agenda.put(Mes.valueOf(miMes), miFestival);
+            agenda.put(festival.getMes(), miFestival);
         }
     }
 
@@ -62,16 +61,15 @@ public class AgendaFestivales {
      */
     private int obtenerPosicionDeInsercion(ArrayList<Festival> festivales, Festival festival)
     {
-        ListIterator<Festival> it = festivales.listIterator();
-        while (it.hasNext())
+        int i = 0;
+        for (Festival miFestival : festivales)
         {
-            if (it.next().getNombre().compareTo(festival.getNombre()) < 0)
+            if (miFestival.getNombre().compareTo(festival.getNombre()) > 0)
             {
-                it.previous();
-                return it.nextIndex();
+                i++;
             }
         }
-        return festivales.size();
+        return i;
     }
 
     /**
@@ -81,19 +79,7 @@ public class AgendaFestivales {
      */
     @Override
     public String toString() {
-        String resul = "";
-        for (Map.Entry<Mes, ArrayList<Festival>> i : agenda.entrySet())
-        {
-            Mes miMes = i.getKey();
-            ArrayList<Festival> miFestival = i.getValue();
-            resul += miMes + "\n";
-            for (Festival miFestival2 : miFestival)
-            {
-                resul += "\t" + miFestival2.toString();
-            }
-            resul += "\n";
-        }
-        return resul;
+        return null;
     }
 
     /**
@@ -110,7 +96,7 @@ public class AgendaFestivales {
        }
        else
        {
-           return 0;
+           return -1;
        }
     }
 
@@ -123,17 +109,19 @@ public class AgendaFestivales {
      * <p>
      * Identifica el tipo exacto del valor de retorno
      */
-    public Map<Estilo, HashSet<String>> festivalesPorEstilo() {
-        Map<Estilo, HashSet<String>> festivalEstiloso = new HashMap<>();
+    public Map<Estilo, TreeSet<String>> festivalesPorEstilo() {
+        Map<Estilo, TreeSet<String>> festivalEstiloso = new HashMap<>();
         for (ArrayList<Festival> festivales : agenda.values()) {
             for (Festival miFestival : festivales) {
                 for (Estilo estilo : miFestival.getEstilos()) {
-                    // Verificar si ya existe un conjunto para este estilo en el mapa
+
                     if (!festivalEstiloso.containsKey(estilo)) {
-                        festivalEstiloso.put(estilo, new HashSet<>());
+                        festivalEstiloso.put(estilo, new TreeSet<>());
                     }
-                    // Agregar el nombre del festival al conjunto correspondiente al estilo
-                    festivalEstiloso.get(estilo).add(miFestival.getNombre());
+                    else
+                    {
+                        festivalEstiloso.get(estilo).add(miFestival.getNombre());
+                    }
                 }
             }
         }
