@@ -1,3 +1,6 @@
+package festivales.modelo;
+
+import festivales.io.FestivalesIO;
 
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -143,40 +146,40 @@ public class Festival {
         int diasQueFaltan = LocalDate.now().getDayOfYear() - fechaInicio.getDayOfYear();
         switch (getMes())
         {
-            case ENERO:
+            case Mes.ENERO:
                 miMes = "ene.";
                 break;
-            case FEBRERO:
+            case Mes.FEBRERO:
                 miMes = "feb.";
                 break;
-            case MARZO:
+            case Mes.MARZO:
                 miMes = "mar.";
                 break;
-            case ABRIL:
+            case Mes.ABRIL:
                 miMes = "abr.";
                 break;
-            case MAYO:
+            case Mes.MAYO:
                 miMes = "may.";
                 break;
-            case JUNIO:
+            case Mes.JUNIO:
                 miMes = "jun.";
                 break;
-            case JULIO:
+            case Mes.JULIO:
                 miMes = "jul.";
                 break;
-            case AGOSTO:
+            case Mes.AGOSTO:
                 miMes = "ago.";
                 break;
-            case SEPTIEMBRE:
+            case Mes.SEPTIEMBRE:
                 miMes = "sep.";
                 break;
-            case OCTUBRE:
+            case Mes.OCTUBRE:
                 miMes = "oct.";
                 break;
-            case NOVIEMBRE:
+            case Mes.NOVIEMBRE:
                 miMes = "nov.";
                 break;
-            case DICIEMBRE:
+            case Mes.DICIEMBRE:
                 miMes = "dic.";
                 break;
         }
@@ -255,11 +258,11 @@ public class Festival {
     }
 
     /**
-     * Código para probar la clase Festival
+     * Código para probar la clase festivales.modelo.Festival
      *
      */
     public static void main(String[] args) {
-        System.out.println("Probando clase Festival");
+        System.out.println("Probando clase festivales.modelo.Festival");
         String datosFestival = "Gazpatxo Rock : " +
                 "valencia: 28-02-2022  :1  :rock" +
                 ":punk " +
